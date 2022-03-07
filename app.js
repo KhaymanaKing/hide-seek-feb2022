@@ -1,7 +1,10 @@
 // import functions and grab DOM elements
-const shedButton = document.getElementById('shed-button');
+const shedButton = document.getElementById('shed-guesses');
+// const shedGuess = document.getElementById('tree-guesses');
 const treeButton = document.getElementById('tree-button');
+// const treeGuess = document.getElementById('tree-guesses');
 const boulderButton = document.getElementById('boulder-button');
+// const boulderGuess = document.getElementById('boulder-guesses');
 
 const shedContainer = document.getElementById('shed-container');
 const treeContainer = document.getElementById('tree-container');
@@ -16,11 +19,13 @@ const winsEl = document.getElementById('wins');
 let correctGuesses = 0;
 let totalGuesses = 0;
 
+
 shedButton.addEventListener('click', () => {
     // get a random item to call the 'correct spot'
     const correctSpot = getRandomHidingSpot();
     // call the handleGuess function with the correct parameters (the user's guess and the "correct" hiding place) to do DOM work
     handleGuess('shed', correctSpot);
+    
 });
 treeButton.addEventListener('click', () => {
     // get a random item to call the 'correct spot'
