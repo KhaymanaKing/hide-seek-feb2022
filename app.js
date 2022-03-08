@@ -1,10 +1,16 @@
 // import functions and grab DOM elements
 const shedButton = document.getElementById('shed-button');
 const shedEl = document.getElementById('shed-guesses');
+const shedCorrectEl = document.getElementById('shed-correct');
+
+
 const treeButton = document.getElementById('tree-button');
 const treeEl = document.getElementById('tree-guesses');
+const treeCorrectEl = document.getElementById('tree-correct');
+
 const boulderButton = document.getElementById('boulder-button');
 const boulderEl = document.getElementById('boulder-guesses');
+const boulderCorrectEl = document.getElementById('boulder-correct');
 
 const shedContainer = document.getElementById('shed-container');
 const treeContainer = document.getElementById('tree-container');
@@ -14,14 +20,17 @@ const totalEl = document.getElementById('total');
 const lossesEl = document.getElementById('losses');
 const winsEl = document.getElementById('wins');
 
-
+// console.log(shedCorrectEl, boulderCorrectEl, treeCorrectEl);
 
 
 let correctGuesses = 0;
 let totalGuesses = 0;
 let treeHistory = 0; 
 let shedHistory = 0; 
-let boulderHistory = 0; 
+let boulderHistory = 0;
+let treeCorrectHistory = 0;
+let shedCorrectHistory = 0;
+let boulderCorrectHistory = 0;
 
 shedButton.addEventListener('click', () => {
     shedHistory ++;
@@ -82,6 +91,14 @@ function handleGuess(userGuess, correctSpot) {
     if (userGuess === correctSpot){
         correctGuesses ++;
     }
+    if (correctSpot === 'tree'){
+        treeCorrectHistory ++;
+    } else if (correctSpot === 'Shed'){
+        shedCorrectHistory ++;
+    } else if (correctSpot === 'boulder'){
+        boulderCorrectHistory ++;
+    }
+
     // update the DOM to show the new value of wins, losses and total guesses to the user
     winsEl.textContent = correctGuesses;
     totalEl.textContent = totalGuesses;
@@ -90,4 +107,8 @@ function handleGuess(userGuess, correctSpot) {
     shedEl.textContent = shedHistory;
     treeEl.textContent = treeHistory;
     boulderEl.textContent = boulderHistory;
+
+    shedCorrectEl.textContent = shedCorrectHistory;
+    treeCorrectEl.textContent = treeCorrectHistory;
+    boulderCorrectEl.textContent = boulderCorrectHistory;
 }
