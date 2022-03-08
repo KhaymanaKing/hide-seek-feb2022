@@ -25,9 +25,11 @@ const winsEl = document.getElementById('wins');
 
 let correctGuesses = 0;
 let totalGuesses = 0;
+
 let treeHistory = 0; 
 let shedHistory = 0; 
 let boulderHistory = 0;
+
 let treeCorrectHistory = 0;
 let shedCorrectHistory = 0;
 let boulderCorrectHistory = 0;
@@ -81,20 +83,18 @@ function handleGuess(userGuess, correctSpot) {
     boulderContainer.classList.remove('face');
     // then increment the guesses
     totalGuesses ++;
-
     // then use getElementById and the correctSpot string to grab the appropriate container from the DOM
-    const hidingFace = document.getElementById(`${correctSpot}-container`);
-    
+    const hidingFace = document.getElementById(`${correctSpot}-container`);    
     // then add the .face css class to that element so that the face shows up
     hidingFace.classList.add('face');
     // then if the user guess is correct, increment the correct guesses
     if (userGuess === correctSpot){
         correctGuesses ++;
     }
-    if (correctSpot === 'tree'){
-        treeCorrectHistory ++;
-    } else if (correctSpot === 'Shed'){
+    if (correctSpot === 'shed'){
         shedCorrectHistory ++;
+    } else if (correctSpot === 'tree'){
+        treeCorrectHistory ++;
     } else if (correctSpot === 'boulder'){
         boulderCorrectHistory ++;
     }
@@ -103,11 +103,11 @@ function handleGuess(userGuess, correctSpot) {
     winsEl.textContent = correctGuesses;
     totalEl.textContent = totalGuesses;
     lossesEl.textContent = totalGuesses - correctGuesses;
-    //count of buttons
+    //count of buttons presses
     shedEl.textContent = shedHistory;
     treeEl.textContent = treeHistory;
     boulderEl.textContent = boulderHistory;
-
+    //count of correct guesses 
     shedCorrectEl.textContent = shedCorrectHistory;
     treeCorrectEl.textContent = treeCorrectHistory;
     boulderCorrectEl.textContent = boulderCorrectHistory;
