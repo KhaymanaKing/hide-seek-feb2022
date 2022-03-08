@@ -1,10 +1,10 @@
 // import functions and grab DOM elements
 const shedButton = document.getElementById('shed-guesses');
-// const shedGuess = document.getElementById('tree-guesses');
+const shedEl = document.getElementById('tree-guesses');
 const treeButton = document.getElementById('tree-button');
-// const treeGuess = document.getElementById('tree-guesses');
+// const treeEl = document.getElementById('tree-guesses');
 const boulderButton = document.getElementById('boulder-button');
-// const boulderGuess = document.getElementById('boulder-guesses');
+// const boulderEl = document.getElementById('boulder-guesses');
 
 const shedContainer = document.getElementById('shed-container');
 const treeContainer = document.getElementById('tree-container');
@@ -18,6 +18,7 @@ const winsEl = document.getElementById('wins');
 
 let correctGuesses = 0;
 let totalGuesses = 0;
+let treeHistory = 1; 
 
 
 shedButton.addEventListener('click', () => {
@@ -25,6 +26,7 @@ shedButton.addEventListener('click', () => {
     const correctSpot = getRandomHidingSpot();
     // call the handleGuess function with the correct parameters (the user's guess and the "correct" hiding place) to do DOM work
     handleGuess('shed', correctSpot);
+    shedHistory ++;
     
 });
 treeButton.addEventListener('click', () => {
@@ -33,6 +35,7 @@ treeButton.addEventListener('click', () => {
 
     // call the handleGuess function with the correct parameters (the user's guess and the "correct" hiding place) to do DOM work
     handleGuess('tree', correctSpot);
+    treeHistory ++;
 });
 
 boulderButton.addEventListener('click', () => {
@@ -41,6 +44,7 @@ boulderButton.addEventListener('click', () => {
 
     // call the handleGuess function with the correct parameters (the user's guess and the "correct" hiding place) to do DOM work
     handleGuess('boulder', correctSpot);
+    BoulderHistory ++;
 });
 
 
@@ -81,5 +85,5 @@ function handleGuess(userGuess, correctSpot) {
     winsEl.textContent = correctGuesses;
     totalEl.textContent = totalGuesses;
     lossesEl.textContent = totalGuesses - correctGuesses;
-
+    shedEl.textContent = treeHistory;
 }
